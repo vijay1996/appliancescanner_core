@@ -2,9 +2,15 @@ import re
 import requests
 from bs4 import BeautifulSoup
 import numpy as np
-from constants import headers
+from constants import headers, user_agents
 import datetime
 import threading
+import random;
+
+def getHeader():
+    fresh_headers = headers
+    headers["User-Agent"] = user_agents[random.randint(0, 31)]
+    return headers
 
 def logText(log):
     print(log)
@@ -35,6 +41,8 @@ def createUrlFromAsin(asin, data_source):
 def getResponse(url):
     session = requests.Session()
     session.trust_env = False
+    headers  = getHeader()
+    logger(headers['User-Agent'])
     response = session.get(url, headers=headers, timeout= 10, allow_redirects=True)
     logger(url + " -> status: " + str(response.status_code))
     return response
