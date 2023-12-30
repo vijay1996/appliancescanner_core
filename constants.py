@@ -1,3 +1,14 @@
+accept_language = {
+    "com": "en-US",
+    "co.uk": "en-US",
+    "de": "de",
+    "es": "es",
+    "fr": "fr",
+    "ca": "en-US",
+    "com.au": "en-US",
+    "in": "en-US",
+    "se": "sv-SE"
+}
 user_agents = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0",
@@ -34,7 +45,6 @@ user_agents = [
 ]
 headers = {
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-    "accept-language": "en-US,en;q=0.9,ar;q=0.8",
     "cache-control": "max-age=0",
     "device-memory": "8",
     "downlink": "10",
@@ -55,7 +65,6 @@ headers = {
     "upgrade-insecure-requests": "1",
     "viewport-width": "1440"
   }
-maxPage = 1
 searchKeys = {
     "air+fryer": "air fryer",
     "blender": "blender",
@@ -77,3 +86,5 @@ data_source_array = [
     'in', 
     'se'
 ]
+
+maxPage = 1

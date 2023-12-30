@@ -22,7 +22,7 @@ def main():
                 if asin != "":
                     logger(f"(Keyword number {searchKeyIndex} out of {len(searchKeys) * len(data_source_array)}) {searchKey}")
                     url = createUrlFromAsin(asin, data_source)
-                    productSoup = BeautifulSoup(getResponse(url).text, 'html.parser')
+                    productSoup = BeautifulSoup(getResponse(url, data_source).text, 'html.parser')
                     masterDataDict = {}
                     masterDataDict = getBasicInfo(productSoup) | {"category": searchKeys[searchKey], "dataSource": data_source} | getBriefInfo(productSoup) | getAdditionalInfo(productSoup) 
                     masterDataDictList.append(masterDataDict)

@@ -2,14 +2,15 @@ import re
 import requests
 from bs4 import BeautifulSoup
 import numpy as np
-from constants import headers, user_agents
+from constants import headers, user_agents, accept_language
 import datetime
 import threading
 import random;
 
-def getHeader():
+def getHeader(data_source):
     fresh_headers = headers
     headers["User-Agent"] = user_agents[random.randint(0, 31)]
+    headers["Accept-Language"] = accept_language[data_source]
     return headers
 
 def logText(log):
@@ -38,10 +39,10 @@ def searchUrl(data_source):
 def createUrlFromAsin(asin, data_source):
     return f"http://www.amazon.{data_source}/dp/product/{asin}/"
 
-def getResponse(url):
+def getResponse(url, data_source):
     session = requests.Session()
     session.trust_env = False
-    headers  = getHeader()
+    headers  = getHeader(data_source)
     logger(headers['User-Agent'])
     response = session.get(url, headers=headers, timeout= 10, allow_redirects=True)
     logger(url + " -> status: " + str(response.status_code))
@@ -50,7 +51,7 @@ def getResponse(url):
 def getAsins(searchKey, page, data_source):
     asins = []
     callUrl = searchUrl(data_source=data_source) + searchKey + "&page=" + page
-    soup = BeautifulSoup(getResponse(callUrl).content, "html.parser")
+    soup = BeautifulSoup(getResponse(callUrl, data_source).content, "html.parser")
     links = soup.find_all("div", {"data-asin" : re.compile(r".*")})
     for link in links:
         asins.append(link['data-asin'])
