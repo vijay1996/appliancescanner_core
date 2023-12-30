@@ -34,8 +34,8 @@ def createUrlFromAsin(asin, data_source):
 
 def getResponse(url):
     session = requests.Session()
-    response = session.get(url, headers=headers, timeout= 10, allow_redirects=True)
     session.trust_env = False
+    response = session.get(url, headers=headers, timeout= 10, allow_redirects=True)
     logger(url + " -> status: " + str(response.status_code))
     return response
 

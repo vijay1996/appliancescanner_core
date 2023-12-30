@@ -25,6 +25,7 @@ def main():
                     productSoup = BeautifulSoup(getResponse(url).text, 'html.parser')
                     masterDataDict = {}
                     masterDataDict = getBasicInfo(productSoup) | {"category": searchKeys[searchKey], "dataSource": data_source} | getBriefInfo(productSoup) | getAdditionalInfo(productSoup) 
+                    logger(masterDataDict)
                     masterDataDictList.append(masterDataDict)
                     currentIndex = asins.index(asin)
                     progress = f"progress: {str(100 - (100 *((len(asins) - (currentIndex + 1)) / len(asins))))}%  (time lapsed: {datetime.datetime.now() - startTime})"
