@@ -10,7 +10,7 @@ import random;
 def getHeader(data_source):
     fresh_headers = headers
     headers["User-Agent"] = user_agents[random.randint(0, 31)]
-    headers["Accept-Language"] = accept_language[data_source]
+    headers["Accept-Language"] = "en-US"
     return headers
 
 def logText(log):

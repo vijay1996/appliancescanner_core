@@ -77,14 +77,10 @@ searchKeys = {
 }
 data_source_array = [
     'com', 
-    'co.uk', 
-    'de', 
-    'es', 
-    'fr', 
+    'co.uk',
     'ca', 
     'com.au', 
-    'in', 
-    'se'
+    'in'
 ]
 
-maxPage = 1
+maxPage = 20
